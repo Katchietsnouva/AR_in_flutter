@@ -64,6 +64,7 @@ flutter:
     # - assets/
     # - assets
     - assets/ct_sas.glb
+    - assets/nouva_graphics.glb
     # - images/a_dot_burr.jpeg
     # - images/a_dot_ham.jpeg
 
