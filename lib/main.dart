@@ -60,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // autoRotate: true,
           backgroundColor: Colors.transparent,
           // animationDuration: Duration(milliseconds: 1000),
+          
           ),
       ) 
       // body: ModelViewer(src: 'assets/ct_sas.glb')
