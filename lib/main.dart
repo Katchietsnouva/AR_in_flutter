@@ -104,7 +104,7 @@ class MyHomePage extends StatelessWidget {
           width: 300,
           height: 300,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.5),
+            color: Colors.grey.withOpacity(0.5),
             borderRadius: BorderRadius.circular(20.0),
           ),
           padding: EdgeInsets.all(20.0),
