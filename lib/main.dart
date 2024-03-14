@@ -18,11 +18,16 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 183, 30, 58)),
         useMaterial3: true,
       ),
+      // routes:{
+      //   "/" :(context) => MyHomePage(title: title)
+      // },
       home: const MyHomePage(title: 'Nouva Graphics'),
       debugShowCheckedModeBanner: false,
     );
   }
 }
+
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
