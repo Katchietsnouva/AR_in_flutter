@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   model_viewer_plus: ^1.7.0
+  visibility_detector: ^0.4.0+2
 
 
   # The following adds the Cupertino Icons font to your application.

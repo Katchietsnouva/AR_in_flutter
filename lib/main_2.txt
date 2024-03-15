@@ -1,6 +1,17 @@
+// class MyHomePage extends StatelessWidget {
+//   final String title;
+
+//   const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text(title),
+//       ),
+
 import 'package:flutter/material.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +25,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Nouva Graphics',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 183, 30, 58)),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 183, 30, 58)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Nouva Graphics'),
@@ -36,7 +48,8 @@ class MyHomePage extends StatelessWidget {
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
-          if (constraints.maxWidth > 600) { // Adjust breakpoint as needed
+          if (constraints.maxWidth > 600) {
+            // Adjust breakpoint as needed
             // Display as a grid with 4 rows and 4 columns
             return GridView.count(
               crossAxisCount: 4,
@@ -51,19 +64,11 @@ class MyHomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   padding: EdgeInsets.all(20.0),
-                  child: VisibilityDetector(
-                    key: Key('visibility_key_$index'),
-                    onVisibilityChanged: (visibilityInfo) {
-                      if (visibilityInfo.visibleFraction > 0.5) {
-                        // Load ModelViewer widget when container becomes visible
-                        ModelViewer(
-                          src: 'assets/nouva_graphics.glb',
-                          autoRotate: true,
-                          rotationPerSecond: "30deg", // Adjust rotation speed as needed
-                        );
-                      }
-                    },
-                    child: const Center(child: Text('Loading...')), // Placeholder text
+                  child: const ModelViewer(
+                    src: 'assets/nouva_graphics.glb',
+                    autoRotate: true,
+                    rotationPerSecond:
+                        "30deg", // Adjust rotation speed as needed
                   ),
                 ),
               ),
@@ -83,19 +88,11 @@ class MyHomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     padding: EdgeInsets.all(20.0),
-                    child: VisibilityDetector(
-                      key: Key('visibility_key_$index'),
-                      onVisibilityChanged: (visibilityInfo) {
-                        if (visibilityInfo.visibleFraction > 0.5) {
-                          // Load ModelViewer widget when container becomes visible
-                          ModelViewer(
-                            src: 'assets/nouva_graphics.glb',
-                            autoRotate: true,
-                            rotationPerSecond: "30deg", // Adjust rotation speed as needed
-                          );
-                        }
-                      },
-                      child: const Center(child: Text('Loading...')), // Placeholder text
+                    child: const ModelViewer(
+                      src: 'assets/nouva_graphics.glb',
+                      autoRotate: true,
+                      rotationPerSecond:
+                          "30deg", // Adjust rotation speed as needed
                     ),
                   ),
                 ),
