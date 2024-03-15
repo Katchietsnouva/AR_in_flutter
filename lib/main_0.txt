@@ -33,29 +33,18 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Row(
-        children: [
-          Expanded(
-            child: Container(
-              color: Colors.grey.withOpacity(0.5),
-              child: const ModelViewer(
-                src: 'assets/ct_sas.glb',
-                autoRotate: false,
-                rotationPerSecond: "30deg", // Adjust rotation speed as needed
-              ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              color: Colors.grey.withOpacity(0.5),
-              child: const ModelViewer(
-                src: 'assets/nouva_graphics.glb',
-                autoRotate: false,
-                rotationPerSecond: "30deg", // Adjust rotation speed as needed
-              ),
-            ),
-          ),
-        ],
+      body: Container(
+        width: MediaQuery.of(context).size.width-100,
+        height: MediaQuery.of(context).size.height-100,
+        decoration: BoxDecoration(
+          color: Colors.grey.withOpacity(0.5),
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: const ModelViewer(
+          src: 'assets/nouva_graphics.glb',
+          autoRotate: false,
+          rotationPerSecond: "30deg", // Adjust rotation speed as needed
+        ),
       ),
     );
   }
