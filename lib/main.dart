@@ -6,14 +6,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Nouva Graphics',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 183, 30, 58)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 183, 30, 58)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Nouva Graphics'),
@@ -29,33 +29,44 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    // Determine the number of items per row based on screen width
+    final itemsPerRow = screenWidth >= 600 ? 2 : 1;
+
+    // Calculate the width for each item
+    final itemWidth = screenWidth / itemsPerRow - 16; // Subtracting padding
+
+    // Build a list of ModelViewer widgets
+    final models = List.generate(
+      2,
+      (index) => Container(
+        width: itemWidth,
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+          ),
+          child: const ModelViewer(
+            src: 'assets/nouva_graphics.glb', // Adjust path as needed
+            autoRotate: false,
+            rotationPerSecond: "30deg",
+          ),
+        ),
+      ),
+    );
+
+    // Wrap the list of ModelViewer widgets in a row if there are more than 1 item per row
+    final view = itemsPerRow > 1 ? Row(children: models) : Column(children: models);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Row(
-        children: [
-          Expanded(
-            child: Container(
-              color: Colors.grey.withOpacity(0.5),
-              child: const ModelViewer(
-                src: 'assets/ct_sas.glb',
-                autoRotate: false,
-                rotationPerSecond: "30deg", // Adjust rotation speed as needed
-              ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              color: Colors.grey.withOpacity(0.5),
-              child: const ModelViewer(
-                src: 'assets/nouva_graphics.glb',
-                autoRotate: false,
-                rotationPerSecond: "30deg", // Adjust rotation speed as needed
-              ),
-            ),
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: view,
       ),
     );
   }
