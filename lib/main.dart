@@ -164,9 +164,9 @@ class MyHomePage extends StatelessWidget {
           if (constraints.maxWidth > 600) { // Adjust breakpoint as needed
             // Display as a grid with 4 rows and 4 columns
             return GridView.count(
-              crossAxisCount: 1,
+              crossAxisCount: 4,
               children: List.generate(
-                1,
+                16,
                 (index) => Container(
                   width: 150,
                   height: 150,
@@ -189,7 +189,7 @@ class MyHomePage extends StatelessWidget {
             return SingleChildScrollView(
               child: Column(
                 children: List.generate(
-                  1,
+                  16,
                   (index) => Container(
                     width: double.infinity,
                     height: 200,
