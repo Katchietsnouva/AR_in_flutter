@@ -33,50 +33,23 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return FutureBuilder(
-            future: _buildContainers(),
-            builder: (BuildContext context, AsyncSnapshot<List<Widget>> snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                // Return a placeholder widget while waiting for the future to complete
-                return CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                // Handle error case
-                return Text('Error: ${snapshot.error}');
-              } else {
-                // Return the UI based on the future result
-                return GridView.count(
-                  crossAxisCount: 1,
-                  children: snapshot.data!,
-                );
-              }
-            },
-          );
-        },
-      ),
-    );
-  }
-
-  Future<List<Widget>> _buildContainers() async {
-    // Simulate a delay of 1 second
-    await Future.delayed(Duration(seconds: 1));
-    
-    // Build and return the list of Container widgets
-    return List.generate(
-      16,
-      (index) => Container(
-        width: 150,
-        height: 150,
-        margin: EdgeInsets.all(8.0),
+      // body: Container(
+      //     child: const ModelViewer(
+      //       src: 'assets/nouva_graphics.glb',
+      //       // autoRotate: true,
+      //       backgroundColor: Colors.transparent,
+      //       // animationDuration: Duration(milliseconds: 1000),
+      //     ),
+      body: Container(
+        width: MediaQuery.of(context).size.width-100,
+        height: MediaQuery.of(context).size.height-100,
         decoration: BoxDecoration(
           color: Colors.grey.withOpacity(0.5),
           borderRadius: BorderRadius.circular(20.0),
         ),
-        padding: EdgeInsets.all(20.0),
         child: const ModelViewer(
           src: 'assets/nouva_graphics.glb',
-          autoRotate: true,
+          autoRotate: false,
           rotationPerSecond: "30deg", // Adjust rotation speed as needed
         ),
       ),
